@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Astronomy pic of the day</title>
+</head>
+
+<body>
+  <div class="header">
+    <h1 class="text-center fw-bold text-uppercase">Astronomy Pic of the Day</h1>
+  </div>
+
+  <div class="text-center" style="margin-top: 1.5rem;">
+    <img id="image" class="d-block w-50 h-50 mx-auto">
+  </div>
+
+  <div>
+    <br>
+    <p id="img-exp" class="fs-6 text text-center"></p>
+    <p id="datedata" class="text-end fst-italic"></p>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+  <script>
+    async function getdata() {
+      let response = await fetch("https://api.nasa.gov/planetary/apod?api_key=qUJjgfxzf3y4Nvg7rv6MMps47pvlWFpd8nlHcRK8")
+      let data = await response.json()
+      return data
+    }
+    getdata().then(data => {
+      // console.log(data)
+      let date = data.date;
+      let image = data.hdurl;
+      let explanation = data.explanation
+      // console.log(date)
+
+      let para_dom = document.getElementById('datedata');
+      para_dom.innerHTML = "Date: " + date
+
+      console.log(para_dom)
+      let para_img = document.getElementById('image')
+      para_img.src = image
+      
+      let para_exp = document.getElementById('img-exp')
+      para_exp.innerHTML = explanation
+    })
+  </script>
+</body>
+
+</html>

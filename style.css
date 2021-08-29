@@ -1,0 +1,23 @@
+body {
+  background-color: rgba(221, 92, 17, 0.329);
+}
+
+.btn1 {
+  background-color: rgb(196, 193, 27);
+  font-weight: bold;
+}
+
+.btn2 {
+  background-color: rgb(70, 170, 24);
+  font-weight: bold;
+}
+
+.header {
+  background-color: rgb(6, 2, 65);
+  color: aliceblue;
+  padding: 0.7rem;
+}
+
+.container {
+  background-color: rgb(192, 181, 24);
+}
